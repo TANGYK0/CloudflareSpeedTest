@@ -40,6 +40,9 @@ https://github.com/XIU2/CloudflareSpeedTest
 
     -httping
         切换测速模式；延迟测速模式改为 HTTP 协议，所用测试地址为 [-url] 参数；(默认 TCPing)
+    -icmping
+        切换Ping模式; 延迟测速模式改为ICMP协议 需要管理员权限允许!!!
+
     -httping-code 200
         有效状态代码；HTTPing 延迟测速时网页返回的有效 HTTP 状态码，仅限一个；(默认 200 301 302)
     -cfcolo HKG,KHH,NRT,LAX,SEA,SJC,FRA,MAD
@@ -82,7 +85,8 @@ https://github.com/XIU2/CloudflareSpeedTest
 	flag.IntVar(&task.TCPPort, "tp", 443, "指定测速端口")
 	flag.StringVar(&task.URL, "url", "https://cf.xiu2.xyz/url", "指定测速地址")
 
-	flag.BoolVar(&task.Httping, "httping", false, "切换测速模式")
+	flag.BoolVar(&task.Httping, "httping", false, "切换http Ping模式")
+	flag.BoolVar(&task.Icmping, "icmping", false, "切换icmp Ping模式,需要Root权限(linux or Mac)")
 	flag.IntVar(&task.HttpingStatusCode, "httping-code", 0, "有效状态代码")
 	flag.StringVar(&task.HttpingCFColo, "cfcolo", "", "匹配指定地区")
 
